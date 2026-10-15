@@ -5,7 +5,7 @@ void print_list(node *head){
     return;
   }
   while(head){
-    printf("%d",(head)->data);
+    printf("%d ",(head)->data);
     head = (head)->next;
   }
   return;

@@ -1,0 +1,23 @@
+Test Case 2 — With carry propagation
+Number 1:  99999999999999999
+Number 2:  00000000000000001
+
+Expected:  100000000000000000
+Test Case 3 — Very large different digit counts
+Number 1:  9999999999
+Number 2:  1
+
+Expected:  10000000000
+Test Case 4 — Max overflow test
+Number 1:  2147483647
+Number 2:  2147483647
+
+Expected:  4294967294
+
+(each number is INT_MAX — tests integer overflow)
+
+Test Case 5 — Unequal length
+Number 1:  123456789012345678
+Number 2:           987654321
+
+Expected:  123456789999999999

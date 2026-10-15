@@ -34,11 +34,12 @@ int insert_last(node **head, node **tail, int data);
 int delete_list(node **head, node **tail);
 void print_list(node *head);
 
-int compare_list(node *head1, node *head2);
+// int compare_list(node *head1, node *head2);
 int list_len(node *head);
 int remove_pre_zeros(node **head);
 
 void usage_message();
+int add_zeros(node ** head,node **tail,int len);
 
 
 #endif
