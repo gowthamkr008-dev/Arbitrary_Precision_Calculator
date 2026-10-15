@@ -11,10 +11,12 @@ int main(int argc, char *argv[])
 		}
 
 		create_list(argv[1],&head1,&tail1);
-		 print_list(head1);
+		printf("Operand 1 :  ");
+		print_list(head1);
 		printf("\n");
 		create_list(argv[3],&head2,&tail2);
-			 print_list(head2);
+		printf("Operand 2 :  ");
+		print_list(head2);
 		printf("\n");
     // Validation
 
@@ -22,6 +24,17 @@ int main(int argc, char *argv[])
     // Create 2 lists of operands
 
     // Remove pre zeros
+		if(remove_pre_zeros(&head1) == FAILURE){
+			return FAILURE;
+		}
+		print_list(head1);
+
+		if(remove_pre_zeros(&head2) == FAILURE){
+			return FAILURE;
+		}
+		print_list(head2);
+		
+
 
     char oper = argv[2][0];
 
@@ -34,6 +47,7 @@ int main(int argc, char *argv[])
 	case '-':
 	    break;
 
+	case '*':
 	case 'x':
 	case 'X':
 	    break;
@@ -41,8 +55,7 @@ int main(int argc, char *argv[])
 	case '/':
 	    break;
 
-	default:
-	    printf("Invalid operator\n");
+	
     }
 }
 

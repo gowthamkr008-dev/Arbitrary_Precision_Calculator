@@ -36,7 +36,7 @@ void print_list(node *head);
 
 int compare_list(node *head1, node *head2);
 int list_len(node *head);
-void remove_pre_zeros(node **head);
+int remove_pre_zeros(node **head);
 
 void usage_message();
 
