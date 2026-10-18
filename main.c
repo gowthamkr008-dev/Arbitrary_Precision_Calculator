@@ -20,7 +20,6 @@ int main(int argc,char *argv[])
   char d_oper1  = ' ';
   if(argv[1][0] == '+' || argv[1][0] == '-'){
     d_oper1 = argv[1][0];
-    len1 -= 1;
   }
 
 
@@ -34,10 +33,9 @@ int main(int argc,char *argv[])
   char d_oper2 = ' ';
   if(argv[3][0] == '+' || argv[3][0] == '-'){
     d_oper2 = argv[3][0];
-    len2 -= 1;
   }
 
-  printf("%c %c\n",d_oper1,d_oper2);
+  // printf("%c %c\n",d_oper1,d_oper2);
   char operation;
   if((d_oper1 == '+' && d_oper2 == '+') || (d_oper1 == '-' && d_oper2 == '-') ||(d_oper1 == ' ' && d_oper2 == ' ') ||(d_oper1 == '+' && d_oper2 == ' ')||(d_oper1 == ' ' && d_oper2 == '+') ){
   /* doing for addition*/
@@ -89,6 +87,51 @@ int main(int argc,char *argv[])
     }
   }
 }
+  short swap = 0; 
+  // printf("length1 %d\nlength2 %d",len1,len2);
+  if((d_oper1 == '+' && d_oper2 == '+') ||(d_oper1 == '-' && d_oper2 == '-')||(d_oper1 == ' ' && d_oper2 == ' ')){
+  if(argv[2][0] == '-'){
+    operation = '-';
+    if(head1 == NULL && head2 != NULL){
+      if(d_oper2 != '-'){
+       printf("-");
+      }
+      printf("%s\n",argv[3]);
+      return SUCCESS;
+    }else if(head1 != NULL && head2 == NULL){ 
+      printf("%s\n",argv[1]);
+      return SUCCESS;
+    }else if (head1 == NULL && head2 == NULL){
+      printf("0");
+      return SUCCESS;
+    }
+
+    if(len1 > len2 ){
+      swap = 0;
+    }else if(len1 < len2){
+      swap = 1;
+    }if(len1 == len2){
+      node *h1 = head1;
+      node *h2 = head2;
+      swap = 0;
+      while(h1 != NULL && h2 != NULL){
+        if(h1->data > h2->data){
+          swap = 0;
+          break;
+        }else if (h1->data < h2->data){
+          swap =1;
+          break;
+        }
+        h1 =  h1->next;
+        h2 = h2->next;
+      }
+    }
+
+  }
+}
+
+  // print_list(head1);
+  // print_list(head2);
  
  
   switch (operation)
@@ -100,7 +143,7 @@ int main(int argc,char *argv[])
       {
         return FAILURE;
       }
-      printf("\n");
+
       if((d_oper1 == '-' && d_oper2 == '-')){
         printf("-");
       }
@@ -109,11 +152,33 @@ int main(int argc,char *argv[])
     }
       break;
 
-
+            
       case '-':
       {
-
+        if(swap == 0){
+         /*normal subtraction*/
+         puts("Do without swap");
+        if(subtraction(tail1,tail2,&headR,&tailR)== FAILURE){
+          return FAILURE;
+        }
+        if((d_oper1=='-' && d_oper2 == '+') ||(d_oper1=='-' && d_oper2 == '-') ){
+          printf("-");
+        }
+          print_list(headR);
+        }
+        /* len1 < len 2 */
+        if(swap)
+        {
+          if(subtraction(tail2,tail1,&headR,&tailR)== FAILURE)
+          {
+            return FAILURE;
+          }
+          printf("-");
+          print_list(headR);
+        }
+        printf("\n");
       }
+
       break;
 
 

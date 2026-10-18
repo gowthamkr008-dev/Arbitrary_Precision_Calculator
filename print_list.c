@@ -10,4 +10,5 @@ void print_list(node * head){
     head = head->next;
   }
   
+  printf("\n");
 }
