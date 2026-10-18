@@ -20,6 +20,8 @@ int subtraction(node *tail1,node *tail2,node **headR,node **tailR){
     tail1 = tail1->prev;
     tail2 = tail2->prev;
   }
+
+  
   if(tail1 == NULL && tail2 != NULL){
     while(tail2 != NULL){
       if(tail2->data < 0){
@@ -35,7 +37,6 @@ int subtraction(node *tail1,node *tail2,node **headR,node **tailR){
     }
     tail2 = tail2->prev;
     }
-    return SUCCESS;
   }else if(tail1 != NULL && tail2 == NULL){
      while(tail1 != NULL){
       if(tail1->data < 0){
@@ -52,7 +53,6 @@ int subtraction(node *tail1,node *tail2,node **headR,node **tailR){
     sub = 0;
     tail1 = tail1->prev;
     }
-    return SUCCESS;
   }
  remove_pre_zeros(headR,tailR);
 

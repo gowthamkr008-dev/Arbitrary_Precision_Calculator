@@ -1,13 +1,16 @@
 #include "apc.h"
 
 int remove_pre_zeros(node **head,node **tail){
+    // puts("enter");
+
   if(*head == NULL){
+
         return 0;  // fail — empty list
     }
 
     // Check if any leading zeros exist
     if((*head)->data != 0){
-        return 0;  // fail — no leading zeros found
+         return 0;  // fail — no leading zeros found
     }
 
     // Remove leading zeros

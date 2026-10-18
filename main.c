@@ -157,7 +157,7 @@ int main(int argc,char *argv[])
       {
         if(swap == 0){
          /*normal subtraction*/
-        //  puts("Do without swap");
+         puts("Do without swap");
         if(subtraction(tail1,tail2,&headR,&tailR)== FAILURE){
           return FAILURE;
         }
