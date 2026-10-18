@@ -25,15 +25,8 @@ int delete_list(node **head,node **tail);
 void print_list(node *head);
 
 int list_length(node *head);
-int add_zeros(node **head,node **tail ,int lan);
-<<<<<<< HEAD
+int add_zeros(node **head,node **tail ,int len);
 int remove_pre_zeros(node **head,node **tail);
-=======
-
-
-
->>>>>>> 9f6d74998bdfb0f48c6c00d7f220b48741cfeb51
-
 
 int addition(node *tail1,node *tail2,node **headR,node **tailR);
 int subtraction(node *tail1,node *tail2,node **headR,node **tailR);
