@@ -55,7 +55,11 @@ int subtraction(node *tail1,node *tail2,node **headR,node **tailR){
     return SUCCESS;
   }
 
+<<<<<<< HEAD
   remove_pre_zeros(headR,tailR);
+=======
+
+>>>>>>> 9f6d74998bdfb0f48c6c00d7f220b48741cfeb51
 
 
  printf("\n");

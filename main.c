@@ -157,6 +157,7 @@ int main(int argc,char *argv[])
       {
         if(swap == 0){
          /*normal subtraction*/
+<<<<<<< HEAD
         //  puts("Do without swap");
         if(subtraction(tail1,tail2,&headR,&tailR)== FAILURE){
           return FAILURE;
@@ -170,6 +171,15 @@ int main(int argc,char *argv[])
           return SUCCESS;
         }
 
+=======
+         puts("Do without swap");
+        if(subtraction(tail1,tail2,&headR,&tailR)== FAILURE){
+          return FAILURE;
+        }
+        if((d_oper1=='-' && d_oper2 == '+') ||(d_oper1=='-' && d_oper2 == '-') ){
+          printf("-");
+        }
+>>>>>>> 9f6d74998bdfb0f48c6c00d7f220b48741cfeb51
           print_list(headR);
         }
         /* len1 < len 2 */
@@ -179,7 +189,10 @@ int main(int argc,char *argv[])
           {
             return FAILURE;
           }
+<<<<<<< HEAD
           if(headR != NULL)
+=======
+>>>>>>> 9f6d74998bdfb0f48c6c00d7f220b48741cfeb51
           printf("-");
           print_list(headR);
         }
