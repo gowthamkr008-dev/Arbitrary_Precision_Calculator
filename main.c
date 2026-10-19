@@ -71,11 +71,13 @@ int main(int argc,char *argv[])
       d_oper2 == '-'? putchar(d_oper2)  : 0 ;
       print_list(head2);
       printf("\n");
+      delete_list(&head2,&tail2);
       return SUCCESS;
     }else if( head2 == NULL && head1 != NULL && (argv[2][0] == '+'))
     {
       d_oper1 == '-' ? putchar(d_oper1) :0 ;
-      print_list(head1);  
+      print_list(head1); 
+        delete_list(&head1,&tail1); 
       printf("\n" );
       return SUCCESS;
     }else if(head1 ==  NULL && head2 == NULL && (argv[2][0] == '+' ||  operation == '+') )
@@ -129,10 +131,12 @@ int main(int argc,char *argv[])
         printf("-");
       }
       print_list(head2);
+        delete_list(&head2,&tail2);
       return SUCCESS;
     }else if(head1 != NULL && head2 == NULL)
     {
-      printf("arg1%s\n",argv[1]);
+      printf("%s\n",argv[1]);
+      delete_list(&head1,&tail1);
       return SUCCESS;
     }else if (head1 == NULL && head2 == NULL)
     {
@@ -188,6 +192,8 @@ int main(int argc,char *argv[])
         printf("-");
 
       print_list(headR);
+      delete_list(&headR,&tailR);
+
       printf("\n");
     }
       break;
@@ -209,6 +215,9 @@ int main(int argc,char *argv[])
             return SUCCESS;
           }
           print_list(headR);
+          delete_list(&headR,&tailR);
+          delete_list(&head2,&tail2);
+          delete_list(&head1,&tail1);
         }
         /* len1 < len 2 */
         
@@ -221,6 +230,9 @@ int main(int argc,char *argv[])
                   printf("-");
 
           print_list(headR);
+          delete_list(&headR,&tailR);
+          delete_list(&head2,&tail2);
+          delete_list(&head1,&tail1);
           printf("\n");
         }
       }

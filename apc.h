@@ -26,6 +26,7 @@ void print_list(node *head);
 
 int list_length(node *head);
 int add_zeros(node **head,node **tail ,int len);
+int delete_list(node **head,node **tail);
 int remove_pre_zeros(node **head,node **tail);
 
 int addition(node *tail1,node *tail2,node **headR,node **tailR);
