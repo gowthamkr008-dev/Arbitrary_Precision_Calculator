@@ -11,7 +11,7 @@ int create_list(char *opr,node **head,node **tail)
 
   while (opr[i] != '\0')
   {
-    if(insert_last(head,tail,opr[i]-'0')== FAILURE)
+    if(insert_last(head,tail,opr[i] - '0') == FAILURE)
     {
       return FAILURE;
     }

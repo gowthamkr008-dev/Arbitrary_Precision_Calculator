@@ -13,7 +13,7 @@ int cla_validation(int argc,char *argv[])
   
   /*user given proper operator or not */
   
-  if( (strcmp(argv[2],"+")!= 0) && (strcmp(argv[2],"-")!= 0) && (strcmp(argv[2],"*")!= 0) && (strcmp(argv[2],"x")!= 0) && (strcmp(argv[2],"X")!= 0) && (strcmp(argv[2],"/")!= 0) && (strcmp(argv[2],"%")!= 0) && (strcmp(argv[2],"^")!= 0) )
+  if( (strcmp(argv[2],"+") != 0) && (strcmp(argv[2],"-") != 0) && (strcmp(argv[2],"*") != 0) && (strcmp(argv[2],"x") != 0) && (strcmp(argv[2],"X") != 0) && (strcmp(argv[2],"/") != 0) && (strcmp(argv[2],"%") != 0) && (strcmp(argv[2],"^") != 0) )
   {
     printf("Error: Invalid operator '%s'. Supported operators are +, -, *, /,%%\n",argv[2]);
     return FAILURE;
@@ -26,7 +26,7 @@ int cla_validation(int argc,char *argv[])
   if(argv[1][0] == '+' ||argv[1][0] == '-') i++;
   
   /* user given 1st proper operand or not*/
-  if(argv[1][0] == '\0' || ( (argv[1][0] == '+' || argv[1][0] == '-') &&argv[1][1] == '\0') )
+  if(argv[1][0] == '\0' || ( (argv[1][0] == '+' || argv[1][0] == '-') && argv[1][1] == '\0') )
   {
     puts("Error: Operand 1 is invalid (empty or contains only sign).");
     return FAILURE;

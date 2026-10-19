@@ -56,11 +56,11 @@ int main(int argc,char *argv[])
     not_same_sign = 2;
   }
   
-  if( ((d_oper1 == '+' && d_oper2 == '+') || (d_oper1 == '-' && d_oper2 == '-') ||(d_oper1 == ' ' && d_oper2 == ' ') ||(d_oper1 == '+' && d_oper2 == ' ')||(d_oper1 == ' ' && d_oper2 == '+') )  || not_same_sign == 2)
+  if( ((d_oper1 == '+' && d_oper2 == '+') || (d_oper1 == '-' && d_oper2 == '-') ||(d_oper1 == ' ' && d_oper2 == ' ') ||(d_oper1 == '+' && d_oper2 == ' ') || (d_oper1 == ' ' && d_oper2 == '+') )  || not_same_sign == 2)
   {
     
     /* doing for addition*/
-    if(argv[2][0] == '+' || not_same_sign ==2)
+    if(argv[2][0] == '+' || not_same_sign == 2)
     {
       operation = '+';
     }
@@ -75,9 +75,9 @@ int main(int argc,char *argv[])
       return SUCCESS;
     }else if( head2 == NULL && head1 != NULL && (argv[2][0] == '+'))
     {
-      d_oper1 == '-' ? putchar(d_oper1) :0 ;
+      d_oper1 == '-' ? putchar(d_oper1) : 0 ;
       print_list(head1); 
-        delete_list(&head1,&tail1); 
+      delete_list(&head1,&tail1); 
       printf("\n" );
       return SUCCESS;
     }else if(head1 ==  NULL && head2 == NULL && (argv[2][0] == '+' ||  operation == '+') )
@@ -117,9 +117,9 @@ int main(int argc,char *argv[])
   short swap = 0,neg_num = 0;
   // printf("length1 %d\nlength2 %d",len1,len2);
   
-  if((d_oper1 == '+' && d_oper2 == '+') ||(d_oper1 == '-' && d_oper2 == '-')||(d_oper1 == ' ' && d_oper2 == ' ') || not_same_sign == 1)
+  if((d_oper1 == '+' && d_oper2 == '+') || (d_oper1 == '-' && d_oper2 == '-') || (d_oper1 == ' ' && d_oper2 == ' ') || not_same_sign == 1)
   {
-    if(argv[2][0] == '-' || not_same_sign ==1)
+    if(argv[2][0] == '-' || not_same_sign == 1)
     {
       operation = '-';
     }
@@ -131,7 +131,7 @@ int main(int argc,char *argv[])
         printf("-");
       }
       print_list(head2);
-        delete_list(&head2,&tail2);
+      delete_list(&head2,&tail2);
       return SUCCESS;
     }else if(head1 != NULL && head2 == NULL)
     {
@@ -140,7 +140,7 @@ int main(int argc,char *argv[])
       return SUCCESS;
     }else if (head1 == NULL && head2 == NULL)
     {
-      printf("0");
+      printf("0\n");
       return SUCCESS;
     }
     
@@ -174,7 +174,7 @@ int main(int argc,char *argv[])
   }
   
   
-  if(swap == 1 && (d_oper1 == '-' && d_oper2 == '+')|| (d_oper1=='-' && d_oper2==' ')||(d_oper1=='-'&& d_oper2 == '-') )
+  if(swap == 1 && (d_oper1 == '-' && d_oper2 == '+') || (d_oper1 == '-' && d_oper2 == ' ') || (d_oper1 == '-' && d_oper2 == '-') )
   {
     neg_num = 1;
   }
@@ -188,13 +188,12 @@ int main(int argc,char *argv[])
       if(addition(tail1,tail2,&headR,&tailR) == FAILURE)
            return FAILURE;
            
-      if( (d_oper1 == '-' && d_oper2 == '-') ||(d_oper1 == '-' && d_oper2 == '+') || (d_oper1 == '-' && d_oper2 == ' ') )
+      if( (d_oper1 == '-' && d_oper2 == '-') || (d_oper1 == '-' && d_oper2 == '+') || (d_oper1 == '-' && d_oper2 == ' ') )
         printf("-");
 
       print_list(headR);
       delete_list(&headR,&tailR);
 
-      printf("\n");
     }
       break;
       case '-':
@@ -206,7 +205,7 @@ int main(int argc,char *argv[])
           if(subtraction(tail1,tail2,&headR,&tailR)== FAILURE)
               return FAILURE;
               
-          if( ((d_oper1=='-' && d_oper2 == '+') ||(d_oper1=='-' && d_oper2 == '-')||(d_oper1=='-' && d_oper2 == ' ') ) && headR != NULL)
+          if( ((d_oper1 == '-' && d_oper2 == '+') || (d_oper1 == '-' && d_oper2 == '-') || (d_oper1 == '-' && d_oper2 == ' ') ) && headR != NULL)
               printf("-");
               
           if(headR == NULL)
@@ -223,17 +222,16 @@ int main(int argc,char *argv[])
         
         if(swap)
         {
-          if(subtraction(tail2,tail1,&headR,&tailR)== FAILURE)
+          if(subtraction(tail2,tail1,&headR,&tailR) == FAILURE)
                 return FAILURE;
           
-          if( (neg_num == 0) && (((d_oper1=='-' && d_oper2 == '+') ||(d_oper1=='-' && d_oper2 == '-')||(d_oper1=='-' && d_oper2 == ' ') ||(d_oper1=='+' && d_oper2 == '+')||(d_oper1==' ' && d_oper2 == ' ') ||(d_oper1==' ' && d_oper2 == '-')) && headR != NULL) )
+          if( (neg_num == 0) && ( ( (d_oper1 == '-' && d_oper2 == '+') || (d_oper1 == '-' && d_oper2 == '-') || (d_oper1 == '-' && d_oper2 == ' ') || (d_oper1 == '+' && d_oper2 == '+') || (d_oper1 == ' ' && d_oper2 == ' ') || (d_oper1 == ' ' && d_oper2 == '-')) && headR != NULL) )
                   printf("-");
 
           print_list(headR);
           delete_list(&headR,&tailR);
           delete_list(&head2,&tail2);
           delete_list(&head1,&tail1);
-          printf("\n");
         }
       }
         break;
@@ -258,74 +256,3 @@ int main(int argc,char *argv[])
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
- char *opr1 ;
-  if(remove_pre_zeros(argv[1],opr1)== FAILURE){
-    return -1;
-  }
-  
-  char *opr2;
-  if(remove_pre_zeros(argv[3],opr2)== FAILURE){
-    return -1;
-  }
-  
-  /* create lits
-  if(opr1[0] == '-'||opr1[0] == '+'){
-   char operation = opr1[0];
-   opr1++;
-  }
-
-
-  if(opr1[0] =='\0' && argv[2][0] == '+'){
-    printf("%s",opr2);
-  }
-  
-
-
-
-
-
-
-
-
-    // if(create_list(opr1,&head1,&tail1) == FAILURE){
-  //   printf("Invalid");
-  // }
-
-
-
-  printf("Eof");
-  return 0;
-}
-
-
-if(opr2[0] == '\0' && argv[2] == '/'){
-    printf("Error: Division by zero is undefined.\n");
-    return FAILURE;
-  }
-
-
-*/
