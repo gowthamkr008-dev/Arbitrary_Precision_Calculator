@@ -1,8 +1,6 @@
 #include "apc.h"
 
 int remove_pre_zeros(node **head,node **tail){
-    // puts("enter");
-
   if(*head == NULL){
 
         return 0;  // fail — empty list

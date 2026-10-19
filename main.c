@@ -37,30 +37,45 @@ int main(int argc,char *argv[])
 
   // printf("%c %c\n",d_oper1,d_oper2);
   char operation;
-  if((d_oper1 == '+' && d_oper2 == '+') || (d_oper1 == '-' && d_oper2 == '-') ||(d_oper1 == ' ' && d_oper2 == ' ') ||(d_oper1 == '+' && d_oper2 == ' ')||(d_oper1 == ' ' && d_oper2 == '+') ){
+  int not_same_sign = 0;
+if(  ((d_oper1 == '+' && d_oper2 == '-') || (d_oper1 == '-' && d_oper2 == '+') || (d_oper1 == '-' && d_oper2 == ' ') || (d_oper1 == ' ' && d_oper2 == '-'))&& (argv[2][0] == '+') ){
+  // printf("opr 1");
+  not_same_sign =1;
+}
+
+if(  ((d_oper1 == '+' && d_oper2 == '-') || (d_oper1 == '-' && d_oper2 == '+')  || (d_oper1 == '-' && d_oper2 == ' ') || (d_oper1 == ' ' && d_oper2 == '-') )&& (argv[2][0] == '-') ){
+  //  printf("opr 1");
+  not_same_sign = 2;
+}
+
+  if((d_oper1 == '+' && d_oper2 == '+') || (d_oper1 == '-' && d_oper2 == '-') ||(d_oper1 == ' ' && d_oper2 == ' ') ||(d_oper1 == '+' && d_oper2 == ' ')||(d_oper1 == ' ' && d_oper2 == '+')  || not_same_sign == 2){
+
   /* doing for addition*/
   if(argv[2][0] == '+')
   {
     operation = '+';
-    if(head1 == NULL && head2 != NULL)
+  }
+  if( not_same_sign ==2){
+    operation = '+';
+  }
+
+    if((head1 == NULL && head2 != NULL) && (argv[2][0] == '+' ||  operation == '+') )
     {
-      d_oper2 == '-' ? putchar(d_oper2)  : 0 ;
+      d_oper2 == '-'? putchar(d_oper2)  : 0 ;
       print_list(head2);
       printf("\n");
       return SUCCESS;
-    }else if(head2 == NULL && head1 != NULL)
+    }else if(head2 == NULL && head1 != NULL && (argv[2][0] == '+' ||  operation == '+') )
     {
       d_oper1 == '-' ? putchar(d_oper1) :0 ;
       print_list(head1);  
       printf("\n");
       return SUCCESS;
-    }else if(head1 ==  NULL && head2 == NULL)
+    }else if(head1 ==  NULL && head2 == NULL && (argv[2][0] == '+' ||  operation == '+') )
     {
       printf("0\n");
       return SUCCESS;
     }
-    
-
     if(len1 > len2)
     {
       /* add zeros in node 2*/
@@ -86,20 +101,28 @@ int main(int argc,char *argv[])
       }
     }
   }
-}
-  short swap = 0; 
+
+  
+
+  short swap = 0,neg_num = 0; 
   // printf("length1 %d\nlength2 %d",len1,len2);
-  if((d_oper1 == '+' && d_oper2 == '+') ||(d_oper1 == '-' && d_oper2 == '-')||(d_oper1 == ' ' && d_oper2 == ' ')){
+  if((d_oper1 == '+' && d_oper2 == '+') ||(d_oper1 == '-' && d_oper2 == '-')||(d_oper1 == ' ' && d_oper2 == ' ') || not_same_sign == 1){
   if(argv[2][0] == '-'){
     operation = '-';
+  }
+    if( not_same_sign ==1){
+    operation = '-';
+  }
+
     if(head1 == NULL && head2 != NULL){
-      if(d_oper2 != '-'){
+      if((d_oper2 != '-') && argv[2][0] == '-'){
        printf("-");
       }
-      printf("%s\n",argv[3]);
+      printf("agv%s\n",argv[3]);
       return SUCCESS;
     }else if(head1 != NULL && head2 == NULL){ 
-      printf("%s\n",argv[1]);
+       
+      printf("arg1%s\n",argv[1]);
       return SUCCESS;
     }else if (head1 == NULL && head2 == NULL){
       printf("0");
@@ -108,32 +131,38 @@ int main(int argc,char *argv[])
 
     if(len1 > len2 ){
       swap = 0;
-    }else if(len1 < len2){
+    }else if(len1 < len2){  
       swap = 1;
     }if(len1 == len2){
       node *h1 = head1;
       node *h2 = head2;
       swap = 0;
       while(h1 != NULL && h2 != NULL){
-        if(h1->data > h2->data){
+        if((h1->data > h2->data) /*&&d_oper1 != '-' */){
           swap = 0;
-          break;
-        }else if (h1->data < h2->data){
-          swap =1;
+          break;//
+        }else if ((h1->data < h2->data) /*&& (d_oper1!='-') */){
+          swap = 1;
           break;
         }
         h1 =  h1->next;
         h2 = h2->next;
       }
+     
     }
-
   }
-}
+   if(swap == 1 && (d_oper1 == '-' && d_oper2 == '+')|| (d_oper1=='-' && d_oper2==' ')||(d_oper1=='-'&& d_oper2 == '-') ){
+        neg_num = 1;
+      }
+/*
+-9 + 4 = -5
+-4 + 9 = 5
+-4 - -9 = 5
 
-  // print_list(head1);
-  // print_list(head2);
- 
- 
+*/
+
+
+printf("%s %s %s =",argv[1],argv[2],argv[3]);
   switch (operation)
   {
 
@@ -144,7 +173,7 @@ int main(int argc,char *argv[])
         return FAILURE;
       }
 
-      if((d_oper1 == '-' && d_oper2 == '-')){
+      if( (d_oper1 == '-' && d_oper2 == '-') ||(d_oper1 == '-' && d_oper2 == '+') || (d_oper1 == '-' && d_oper2 == ' ') ){
         printf("-");
       }
       print_list(headR);
@@ -157,11 +186,11 @@ int main(int argc,char *argv[])
       {
         if(swap == 0){
          /*normal subtraction*/
-         puts("Do without swap");
+        //  puts("Do without swap");
         if(subtraction(tail1,tail2,&headR,&tailR)== FAILURE){
           return FAILURE;
         }
-        if( ((d_oper1=='-' && d_oper2 == '+') ||(d_oper1=='-' && d_oper2 == '-') ) && headR != NULL){
+        if( ((d_oper1=='-' && d_oper2 == '+') ||(d_oper1=='-' && d_oper2 == '-')||(d_oper1=='-' && d_oper2 == ' ') ) && headR != NULL){
           printf("-");
         }
       
@@ -169,7 +198,6 @@ int main(int argc,char *argv[])
           printf("0\n");
           return SUCCESS;
         }
-
           print_list(headR);
         }
         /* len1 < len 2 */
@@ -179,8 +207,9 @@ int main(int argc,char *argv[])
           {
             return FAILURE;
           }
-          if(headR != NULL)
+          if( (neg_num == 0) && (((d_oper1=='-' && d_oper2 == '+') ||(d_oper1=='-' && d_oper2 == '-')||(d_oper1=='-' && d_oper2 == ' ') ||(d_oper1=='+' && d_oper2 == '+')||(d_oper1==' ' && d_oper2 == ' ') ||(d_oper1==' ' && d_oper2 == '-')) && headR != NULL) ){
           printf("-");
+        }
           print_list(headR);
         }
         printf("\n");
