@@ -1,3 +1,8 @@
+#ifndef APC_H
+
+#define APC_H
+
+
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
@@ -33,4 +38,7 @@ int addition(node *tail1,node *tail2,node **headR,node **tailR);
 int subtraction(node *tail1,node *tail2,node **headR,node **tailR);
 int multiplication(node *tail1,node *tail2,node **headR,node **tailR);
 int division(node *head1,node *head2,node **headR,node **tailR);
+
+
+#endif
 
