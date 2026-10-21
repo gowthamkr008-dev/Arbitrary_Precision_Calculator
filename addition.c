@@ -55,6 +55,11 @@ int addition(node *tail1,node *tail2,node **headR,node **tailR)
       }
       tail1 = tail1->prev;
     }
+
+    if(carry)
+    {
+      insert_first(headR,tailR,carry);
+    }
     return SUCCESS;
   }else if(tail2 != NULL)
   { 

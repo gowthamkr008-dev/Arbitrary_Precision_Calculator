@@ -270,6 +270,9 @@ int main(int argc,char *argv[])
           if(multiplication(tail1,tail2,&headR,&tailR)== FAILURE){
             return FAILURE;
           }
+          if( (d_oper1 == '-' && d_oper2 == ' ') ||(d_oper1 == ' ' && d_oper2 == '-') || (d_oper1 == '-' && d_oper2 == '+')||(d_oper1 == '+' && d_oper2 == '-')    ){
+            printf("-");
+          }
           print_list(headR);
 
         }
