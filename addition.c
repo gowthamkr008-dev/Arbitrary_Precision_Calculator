@@ -4,6 +4,7 @@
 int addition(node *tail1,node *tail2,node **headR,node **tailR)
 {
   int carry = 0,sum;
+ 
   while (tail1 != NULL && tail2 != NULL)
   {
     sum = tail1->data + tail2->data + carry;
@@ -38,7 +39,7 @@ int addition(node *tail1,node *tail2,node **headR,node **tailR)
     while (tail1 != NULL)
     {
       sum = tail1->data + carry;
-      // printf("t1 %d t2 %d carry %d sum %d\n",tail1->data,tail2->data,carry,sum);
+      // printf("t1 %d carry %d sum %d\n",tail1->data,carry,sum);
       if(sum > 9)
       {
         carry = 1;
@@ -60,7 +61,7 @@ int addition(node *tail1,node *tail2,node **headR,node **tailR)
     while (tail2 != NULL)
     {
       sum = tail2->data + carry;
-      // printf("t1 %d t2 %d carry %d sum %d\n",tail1->data,tail2->data,carry,sum);
+      // printf("t2 %d carry %d sum %d\n",tail2->data,carry,sum);
       
       if(sum > 9)
       {
@@ -77,6 +78,10 @@ int addition(node *tail1,node *tail2,node **headR,node **tailR)
     }
     tail2 = tail2->prev;
   }
+  if(carry)
+    {
+      insert_first(headR,tailR,carry);
+    }
   return SUCCESS;
 }
 }

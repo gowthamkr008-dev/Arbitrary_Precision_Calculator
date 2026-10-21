@@ -26,7 +26,7 @@ int main(int argc,char *argv[])
     d_oper1 = argv[1][0];
   }
   
-  /* create a list at thime remove the zeros */
+  /* create a list at time remove the zeros */
   int len2;
   
   if( (len2 = create_list(argv[3],&head2,&tail2)) == FAILURE)
@@ -44,7 +44,9 @@ int main(int argc,char *argv[])
   
   // printf("%c %c\n",d_oper1,d_oper2);
   char operation;
-  int not_same_sign = 0;
+  short not_same_sign = 0,swap = 0,neg_num = 0;
+
+  if(argv[2][0] == '-' || argv[2][0] == '+'){
   
   if(((d_oper1 == '+' && d_oper2 == '-') || (d_oper1 == '-' && d_oper2 == '+') || (d_oper1 == '-' && d_oper2 == ' ') || (d_oper1 == ' ' && d_oper2 == '-') ) && (argv[2][0] == '+') )
   {
@@ -114,7 +116,7 @@ int main(int argc,char *argv[])
     }
   }
   
-  short swap = 0,neg_num = 0;
+
   // printf("length1 %d\nlength2 %d",len1,len2);
   
   if((d_oper1 == '+' && d_oper2 == '+') || (d_oper1 == '-' && d_oper2 == '-') || (d_oper1 == ' ' && d_oper2 == ' ') || not_same_sign == 1)
@@ -180,7 +182,32 @@ int main(int argc,char *argv[])
   }
   
   // printf("%s %s %s =",argv[1],argv[2],argv[3]);
+  }
+
+
+
+  if(argv[2][0] == 'x' ||argv[2][0] == 'X'||argv[2][0] == '*'  ){
+    operation = '*';
+  }
+
+  /* any one of inptu is zero in multiplication output is zero */
+  if( (head1 == NULL || head2== NULL) && operation == '*'){
+    printf("0\n");
+    if(head1!= NULL){
+      delete_list(&head1,&tail1);
+    }
+    if(head2 != NULL){
+      delete_list(&head2,&tail2);
+    }
+    return SUCCESS;
+  }
   
+  // print_list(head1);
+  // print_list(head2);
+
+
+
+
   switch (operation)
   {
     case '+':
@@ -240,6 +267,10 @@ int main(int argc,char *argv[])
         case 'X':
         case 'x':
         {
+          if(multiplication(tail1,tail2,&headR,&tailR)== FAILURE){
+            return FAILURE;
+          }
+          print_list(headR);
 
         }
         break;
