@@ -38,7 +38,7 @@ int add_zeros_last(node **head,node **tail,int len);
 int addition(node *tail1,node *tail2,node **headR,node **tailR);
 int subtraction(node *tail1,node *tail2,node **headR,node **tailR);
 int multiplication(node *tail1,node *tail2,node **headR,node **tailR);
-int division(node *head1,node *head2,node **headR,node **tailR);
+int division(node *head1,node *tail1,node *head2,node *tail2,node **headR,node **tailR);
 
 
 #endif

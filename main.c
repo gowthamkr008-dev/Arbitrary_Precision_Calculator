@@ -189,7 +189,9 @@ int main(int argc,char *argv[])
   if(argv[2][0] == 'x' ||argv[2][0] == 'X'||argv[2][0] == '*'  ){
     operation = '*';
   }
-
+  if(argv[2][0] == '/'  ){
+    operation = '/';
+  }
   /* any one of inptu is zero in multiplication output is zero */
   if( (head1 == NULL || head2== NULL) && operation == '*'){
     printf("0\n");
@@ -205,6 +207,18 @@ int main(int argc,char *argv[])
   // print_list(head1);
   // print_list(head2);
 
+  
+  if((head1 == NULL || head2 != NULL) && operation == '/'){
+    printf("0\n");
+    delete_list(&head2,&tail2);
+    return SUCCESS;
+  }
+
+  if((head1 != NULL || head2 == NULL) && operation == '/'){
+    printf("Error: Division by zero is undefined.\n");
+    delete_list(&head2,&tail2);
+    return SUCCESS;
+  }
 
 
 

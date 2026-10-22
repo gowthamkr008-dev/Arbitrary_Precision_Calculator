@@ -15,7 +15,7 @@ int cla_validation(int argc,char *argv[])
   
   if( (strcmp(argv[2],"+") != 0) && (strcmp(argv[2],"-") != 0) && (strcmp(argv[2],"*") != 0) && (strcmp(argv[2],"x") != 0) && (strcmp(argv[2],"X") != 0) && (strcmp(argv[2],"/") != 0) && (strcmp(argv[2],"%") != 0) && (strcmp(argv[2],"^") != 0) )
   {
-    printf("Error: Invalid operator '%s'. Supported operators are +, -, *, /,%%\n",argv[2]);
+    printf("Error: Invalid operator '%s'. Supported operators are +, -, *, /\n",argv[2]);
     return FAILURE;
   }
   
