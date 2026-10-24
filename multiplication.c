@@ -95,35 +95,3 @@ return SUCCESS;
     
 
 
-
-    /*
-    
-    print_list(t_h_r1);
-    print_list(t_h_r2);
-    if(addition(t_t_r1,t_t_r2,&final_res_head,&final_res_tail) == FAILURE){
-      return FAILURE;
-    }
-    // print_list(final_res_head);
-    delete_list(&t_h_r1,&t_t_r1);
-    t_h_r2 = final_res_head;
-    t_t_r2 = final_res_tail;
-    final_res_head = NULL;
-    final_res_tail = NULL;
-    print_list(t_h_r2);
-    if(tail2->prev!= NULL){
-      if(add_zeros_last(&t_h_r2,&t_t_r2 , count++)== FAILURE){
-      return FAILURE;
-    }
-  }
-    printf("After add zeros : ");
-     print_list(t_h_r2);
-    printf("\n");
-    temp = tail1;
-    tail2 = tail2->prev;
-  }
-  printf("Final result : ");
-  print_list(t_h_r2);
-}
-    
-    
-    */

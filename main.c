@@ -1,6 +1,4 @@
 #include "apc.h"
-
-
 int main(int argc,char *argv[])
 {
   /*verify user valid operator and operand*/
@@ -46,7 +44,8 @@ int main(int argc,char *argv[])
   char operation;
   short not_same_sign = 0,swap = 0,neg_num = 0;
 
-  if(argv[2][0] == '-' || argv[2][0] == '+'){
+  if(argv[2][0] == '-' || argv[2][0] == '+')
+  {
   
   if(((d_oper1 == '+' && d_oper2 == '-') || (d_oper1 == '-' && d_oper2 == '+') || (d_oper1 == '-' && d_oper2 == ' ') || (d_oper1 == ' ' && d_oper2 == '-') ) && (argv[2][0] == '+') )
   {
@@ -186,14 +185,17 @@ int main(int argc,char *argv[])
 
 
 
-  if(argv[2][0] == 'x' ||argv[2][0] == 'X'||argv[2][0] == '*'  ){
+  if(argv[2][0] == 'x' ||argv[2][0] == 'X'||argv[2][0] == '*'  )
+  {
     operation = '*';
   }
-  if(argv[2][0] == '/'  ){
+  if(argv[2][0] == '/'  )
+  {
     operation = '/';
   }
   /* any one of inptu is zero in multiplication output is zero */
-  if( (head1 == NULL || head2== NULL) && operation == '*'){
+  if( (head1 == NULL || head2== NULL) && operation == '*')
+  {
     printf("0\n");
     if(head1!= NULL){
       delete_list(&head1,&tail1);
@@ -208,18 +210,21 @@ int main(int argc,char *argv[])
   // print_list(head2);
 
   
-  if((head1 == NULL || head2 != NULL) && operation == '/'){
+  if((head1 == NULL && head2 != NULL) && operation == '/')
+  {
     printf("0\n");
     delete_list(&head2,&tail2);
     return SUCCESS;
   }
 
-  if((head1 != NULL || head2 == NULL) && operation == '/'){
+  if((head1 != NULL && head2 == NULL) && operation == '/')
+  {
     printf("Error: Division by zero is undefined.\n");
     delete_list(&head2,&tail2);
     return SUCCESS;
   }
 
+    // puts("start division");
 
 
   switch (operation)
@@ -243,6 +248,8 @@ int main(int argc,char *argv[])
         {
           /*normal subtraction*/
           //  puts("Do without swap");
+          print_list(head1);
+          print_list(head2);
           if(subtraction(tail1,tail2,&headR,&tailR)== FAILURE)
               return FAILURE;
               
@@ -263,6 +270,8 @@ int main(int argc,char *argv[])
         
         if(swap)
         {
+          print_list(head1);
+          print_list(head2);
           if(subtraction(tail2,tail1,&headR,&tailR) == FAILURE)
                 return FAILURE;
           
@@ -288,12 +297,24 @@ int main(int argc,char *argv[])
             printf("-");
           }
           print_list(headR);
+          delete_list(&headR,&tailR);
+          delete_list(&head1,&tail1);
+          delete_list(&head2,&tail2);
 
         }
         break;
         
         case '/':
         {
+          // puts("start division");
+          if(division(head1,tail1,head2,tail2,&headR,&tailR) == FAILURE){
+            printf("failed");
+            return FAILURE;
+          }
+          print_list(headR);
+          delete_list(&head1,&tail1);
+          delete_list(&head2,&tail2);
+          delete_list(&headR,&tailR);
 
         }
         break;

@@ -4,6 +4,7 @@
 void print_list(node * head)
 {
   if(head == NULL){
+    printf("List empty\n");
     return ;
   }
   
