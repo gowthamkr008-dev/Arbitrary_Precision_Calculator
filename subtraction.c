@@ -1,8 +1,25 @@
 #include "apc.h"
-
+// static void print_lists(node * head)
+// {
+//   if(head == NULL){
+//     printf("List empty\n");
+//     return ;
+//   }
+  
+//   while (head != NULL)
+//   {
+//     printf("%d",(head)->data);
+//     head = head->prev;
+//   }
+//   printf("\n");
+// }
 
 int subtraction(node *tail1,node *tail2,node **headR,node **tailR)
 {
+  // print_lists(tail1);
+  // print_lists(tail2);
+  
+
   int sub,barrow = 0;
   
   while(tail1 != NULL && tail2 != NULL)
@@ -76,6 +93,6 @@ int subtraction(node *tail1,node *tail2,node **headR,node **tailR)
   }
 }
   remove_pre_zeros(headR,tailR);
-  printf("\n");
+  // printf("\n");
   return SUCCESS;
 }

@@ -4,21 +4,12 @@
 
 int compare_list(node *head1,node *head2){
 
-  int len1 =0,len2 = 0;
+  uint len1 =list_length(head1);
+  uint len2 = list_length(head2);
   node * h1 = head1;
   node *h2 = head2;
-
-  while(h1 != NULL){
-    len1++;
-    h1 =h1->next;
-  }
-  while (h2 != NULL)
-  {
-    len2++;
-    h2 = h2->next;
-  }
-
   // printf("len1 %d\nlen2 %d",len1,len2);
+
   if(len1 < len2 ){
     return -1;
   }else if(len1 > len2){
