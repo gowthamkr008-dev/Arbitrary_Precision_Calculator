@@ -34,7 +34,7 @@ void print_list(node *head);
 // int compare_list(node *head1,node *head2);
 
 uint list_length(node *head);
-int add_zeros(node **head,node **tail ,int len);
+// int add_zeros(node **head,node **tail ,int len);
 int delete_list(node **head,node **tail);
 int remove_pre_zeros(node **head,node **tail);
 // int add_zeros_last(node **head,node **tail,int len);
