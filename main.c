@@ -327,6 +327,10 @@ int main(int argc,char *argv[])
             delete_list(&head1,&tail1);
             return FAILURE;
           }
+          if( ((d_oper1 == '-'&& d_oper2 == ' ') || (d_oper1 == ' '&& d_oper2 == '-') || (d_oper1 == '-'&& d_oper2 == '+')||(d_oper1 == '-'&& d_oper2 == '+'))){
+           if((headR->data != 0) )
+            printf("-");
+          }
           print_list(headR);
         }
         break;
