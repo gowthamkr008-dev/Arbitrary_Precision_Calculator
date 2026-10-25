@@ -1,5 +1,18 @@
 #include "apc.h"
+/***********************************************************************************************************************************************************
+Title : Addition
 
+Operation : This function do the addition digit by digit fom the last and store the output in the result in headR list 
+
+Input  : Two operands tail
+
+output : SUCCESS   It means addition done succesfully 
+         FAILURE   Any allocation failure 
+
+
+
+
+***********************************************************************************************************************************************************/
 
 int addition(node *tail1,node *tail2,node **headR,node **tailR)
 {
