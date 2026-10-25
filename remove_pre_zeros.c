@@ -2,25 +2,19 @@
 
 int remove_pre_zeros(node **head,node **tail)
 {
-  if(*head == NULL)
-  {
-        return FAILURE;  
+  
+    if (*head == NULL)
+    {
+        return FAILURE;
     }
     
-    if((*head)->data != 0){
-         return FAILURE;
-    }
-
-
-    while(*head != NULL && (*head)->data == 0)
+    while ((*head)->data == 0 && (*head)->next != NULL)
     {
-        node* temp = *head;
+        node *temp = *head;
         *head = (*head)->next;
-        if(*head != NULL)
-        {
-            (*head)->prev = NULL;
-        }
+        (*head)->prev = NULL;
         free(temp);
     }
-    return SUCCESS; 
+
+    return SUCCESS;
 }

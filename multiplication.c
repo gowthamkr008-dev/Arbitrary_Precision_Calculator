@@ -23,54 +23,44 @@ int multiplication(node *tail1,node *tail2,node **headR,node **tailR)
   
   int mul,carry = 0,digit;
   
-  node * temp = tail1; // after every digit of tail2 completion tail 2 comes back to tail opsition
-  
+  node * temp = tail1; 
+
   int count = 1;
   int len = 0;
   
-  /*loop for tail 2 for each digit multiplication*/
   while(tail2 != NULL)
   {
      carry = 0;
     while(temp != NULL)
     {
       mul = (temp->data * tail2->data) + carry;
-      // printf("%d x %d + %d = %d\n",temp->data,tail2->data,carry,mul);
+      
       if(mul > 9 )
       {
         digit =  mul % 10;
         carry = mul / 10;
-        // printf("%d x %d + %d = %d\n",temp->data,tail2->data,carry,digit);
-        
-        if(insert_first(&t_h_r1,&t_t_r1,digit)== FAILURE){
-          return FAILURE;
+       if(insert_first(&t_h_r1,&t_t_r1,digit)== FAILURE){
+          goto error;
         }
       }else{
         carry = 0;
         if(insert_first(&t_h_r1,&t_t_r1,mul)== FAILURE){
-          return FAILURE;
+           goto error;
         }
       }
       temp = temp->prev;
     }
-    // printf("\n");
-    if(carry)
+     if(carry)
     {
       if(insert_first(&t_h_r1,&t_t_r1,carry)== FAILURE)
       {
-          return FAILURE;
+           goto error;
       }
     }
 
-    // printf("temp1 : ");
-    // print_list(t_h_r1);
-    //  printf("temp2 : ");
-    // print_list(t_h_r2);
     if(addition(t_t_r1,t_t_r2,&final_res_head,&final_res_tail)== FAILURE){
-      return FAILURE;
+      goto error;
     }
-    // print_list(final_res_head);
-    
     delete_list(&t_h_r2,&t_t_r2);
     delete_list(&t_h_r1,&t_t_r1);
 
@@ -79,32 +69,40 @@ int multiplication(node *tail1,node *tail2,node **headR,node **tailR)
 
     if(tail2->prev != NULL){
     if(add_zeros_last(&t_h_r1,&t_t_r1,count++)== FAILURE){
-      return FAILURE;
+        goto error;
     }
   }
-//    printf("\nAdding zero: ");
-//  print_list(t_h_r1);
-
-    final_res_head = NULL;
-    final_res_tail = NULL;
+  
+  final_res_head = NULL;
+  final_res_tail = NULL;
     
     temp = tail1;
     tail2 = tail2->prev;
   }
-  // if(carry)
-  //   {
-  //     if(insert_first(&t_h_r1,&t_t_r1,carry)== FAILURE)
-  //     {
-  //         return FAILURE;
-  //     }
-  //   }
+
   *headR = t_h_r2;
   *tailR = t_t_r2;
   t_h_r2 = NULL;
   t_t_r2 = NULL;
-// print_list(t_h_r2);
 
 return SUCCESS;
+
+
+
+error:
+    if(t_h_r1 != NULL){
+      delete_list(&t_h_r1,&t_t_r1);
+    }
+    if(t_h_r2 != NULL){
+      delete_list (&t_h_r2,&t_t_r2);
+    }
+
+    if(final_res_head != NULL){
+      delete_list(&final_res_head,&final_res_tail);
+    }
+
+
+
 }
 
     
