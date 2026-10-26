@@ -3,7 +3,7 @@ src := $(wildcard *.c)
 
 obj := $(patsubst %.c,%.o,$(src))
 
-a.out: $(obj)
+a.exe: $(obj)
 	gcc -o $@ $^
 
 %.o: %.c

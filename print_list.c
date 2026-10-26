@@ -1,5 +1,4 @@
 #include "apc.h"
-#include "apc.h"
 
 void print_list(node * head)
 {

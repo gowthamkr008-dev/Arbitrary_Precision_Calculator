@@ -23,6 +23,7 @@ int cla_validation(int argc,char *argv[])
   /* check the sign*/
   int i = 0;
   
+  /*any sign berfore the operand avoid the sign to checking the inside the digit checking*/
   if(argv[1][0] == '+' ||argv[1][0] == '-') i++;
   
   /* user given 1st proper operand or not*/
@@ -54,7 +55,6 @@ int cla_validation(int argc,char *argv[])
     puts("Error: Operand 2 is invalid (empty or contains only sign).");
     return FAILURE;
   }
-  
   while(argv[3][i] != '\0')
   {
     if(!isdigit(argv[3][i]))

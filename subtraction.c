@@ -1,30 +1,38 @@
-#include "apc.h"
 /***********************************************************************************************************************************************************
 Title     : Subtraction
 
-operation :
+operation : Do the subtraction digit by igit from the last and store to the result in headR node 
+
+Input     : Two operand tail
+
+Output    : SUCCCESS the subtraction done properly
+          : FAILURE return failure when memory allocation failure
+
 ***********************************************************************************************************************************************************/
+
+#include "apc.h"
+
 int subtraction(node *tail1,node *tail2,node **headR,node **tailR)
 {
   int sub = 0;
   
-  while(tail1 != NULL && tail2 != NULL)
+  while(tail1 != NULL && tail2 != NULL)                                            /*subtraction do until the both are in same length */
   {
     
-    if( (tail1->data > tail2->data)  || (tail1->data ==  tail2->data) )
+    if( (tail1->data > tail2->data)  || (tail1->data ==  tail2->data) )            /*operand 1 is greater than operand 2*/
     {
-      sub = tail1->data - tail2->data;
-    }else if(tail1->data < tail2->data)
+      sub = tail1->data - tail2->data;                                             /*subtract the operand 1 and operand 2*/
+    }else if(tail1->data < tail2->data)                                            /*operand 1 is less than operand 2 take a barrow from the last */
     {
       if( tail1->prev != NULL)
       {
-        tail1->prev->data -= 1;
+        tail1->prev->data -= 1;                                                   /* take a barrow from the previous node*/
         tail1->data += 10;
         sub = tail1->data - tail2->data;
       }
     }
 
-    if(insert_first(headR,tailR,sub) == FAILURE)
+    if(insert_first(headR,tailR,sub) == FAILURE)                                     /*inser a data to the result node*/
     {
       return FAILURE;
     }
@@ -34,10 +42,10 @@ int subtraction(node *tail1,node *tail2,node **headR,node **tailR)
   }
 
 
-  if(tail1 == NULL && tail2 != NULL)
+  if(tail1 == NULL && tail2 != NULL)                                                /* both operand length is not a same */
   {
     
-    while(tail2 != NULL)
+    while(tail2 != NULL)                                                             /* inser other data to the result */
     {
       if(tail2->data < 0)
       {
@@ -79,6 +87,6 @@ int subtraction(node *tail1,node *tail2,node **headR,node **tailR)
     tail1 = tail1->prev;
   }
 }
-  remove_pre_zeros(headR,tailR);
+  remove_pre_zeros(headR,tailR);                                     /* after subtracting remove pre zeros */
   return SUCCESS;
 }
