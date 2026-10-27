@@ -8,6 +8,18 @@ Input     : Two operand tail
 Output    : SUCCCESS the subtraction done properly
           : FAILURE return failure when memory allocation failure
 
+<<<<<<< HEAD
+=======
+
+Sample Testcase : 
+                Input : 1234 - 976
+
+                Output :    1234
+                          -  976
+                          -------
+                             258
+                          -------
+>>>>>>> 464f81a (8:22 27-10-26)
 ***********************************************************************************************************************************************************/
 
 #include "apc.h"

@@ -5,7 +5,11 @@ int create_list(char *opr,node **head,node **tail)
 {
 
   int len = 0, i = 0;
+<<<<<<< HEAD
   /*avoid the sign */
+=======
+  /*avoid the sign to validate */
+>>>>>>> 464f81a (8:22 27-10-26)
   if(opr[0] == '+' || opr[0] == '-')
        i++;
   
