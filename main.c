@@ -29,14 +29,7 @@ Return Value: SUCCESS the operation completely done
 ***********************************************************************************************************************************************************/
 
 
-<<<<<<< HEAD
 #include "apc.h"
-
-
-   
-=======
-#include "apc.h" 
->>>>>>> 464f81a (8:22 27-10-26)
 static int add_zeros(node **head,node **tail,int len){
   int i;
   for(i = 0;i < len;i++)
